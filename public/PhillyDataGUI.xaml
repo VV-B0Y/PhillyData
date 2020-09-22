@@ -56,7 +56,7 @@
 						<ColumnDefinition Width="8*"/>
 					</Grid.ColumnDefinitions>
 					<StackPanel Background="#1F1726" SnapsToDevicePixels="True" Grid.Row="1" Grid.Column="0">
-						<Image Height="100" Width="170" Name="Icon" SnapsToDevicePixels="True" Source="C:\Users\vvboy\Pictures\PHL.png" Margin="0,10,0,10"/>
+						<Image Height="100" Width="170" Name="Icon" SnapsToDevicePixels="True" Source="C:\Users\vvboy\Pictures\code.png" Margin="0,10,0,10"/>
 						<Button Content="Dashboard" VerticalAlignment="Top" Height="40" Background="#1F1726" BorderThickness="0,0,0,0" FontWeight="Bold" Foreground="#ffffff" Name="HomeBT"/>
 						<Button Content="PPD DATA" VerticalAlignment="Top" Height="40" Background="#1F1726" BorderThickness="0,0,0,0" FontWeight="Bold" Foreground="#ffffff" Name="PPDBT"/>
 					</StackPanel>
@@ -69,17 +69,17 @@
 						<TabItem Header="PPD DATA" Visibility="Collapsed" Name="PPDTab">
 							<Grid Background="#201827">
 								<Grid.RowDefinitions>
-									<RowDefinition Height="30"/>
-									<RowDefinition Height="30"/>
+									<RowDefinition Height="35"/>
+									<RowDefinition Height="35"/>
 									<RowDefinition Height="515*"/>
 								</Grid.RowDefinitions>
 
-								<TextBox Name="SearchTB" Grid.Row="0" Controls:TextBoxHelper.Watermark="🔎 Search" Background="#271D30" Foreground="#ffffff" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="350" TextWrapping="Wrap" Margin="0"/>
+								<TextBox Name="SearchTB" Grid.Row="0" Controls:TextBoxHelper.Watermark="🔎 Search" Background="#0E0D14" Foreground="#ffffff" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="350" TextWrapping="Wrap" Margin="0,4,0,0"/>
 
 								<!--<StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,0">-->
 								<Button Name="PPDGridBT" Grid.Row="1" Background="#271D30" Foreground="#ffffff" BorderThickness="0" Content="PPD Salary info" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,200,0"/>
 								<Button Name="LiVGridBT" Grid.Row="1" Background="#271D30" Foreground="#ffffff" BorderThickness="0" Content="LI Violations" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,400,0"/>
-								<Button Name="ComplaintsGridBT" Grid.Row="1" Background="#271D30" Foreground="#ffffff" BorderThickness="0" Content="311 Complaints" Height="24" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
+								<Button Name="ComplaintsGridBT" Grid.Row="1" Background="#271D30" Foreground="#ffffff" BorderThickness="0" Content="311 Complaints" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0"/>
 								<Button Name="PCGridBT" Grid.Row="1" Background="#271D30" Foreground="#ffffff" BorderThickness="0" Content="Public cases" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="200,0,0,0"/>
 								<Button Name="CrimeGridBT" Grid.Row="1" Background="#271D30" Foreground="#ffffff" BorderThickness="0" Content="Crime Data" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="400,0,0,0"/>
 								<!--</StackPanel>-->

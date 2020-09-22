@@ -83,7 +83,7 @@
 	$ViolationsURI = "https://phl.carto.com/api/v2/sql?q=SELECT * FROM violations WHERE casecreateddate >= current_date - 20 AND violationstatus = 'OPEN'"
 	$311ComplaintUri = "https://phl.carto.com/api/v2/sql?q=SELECT * FROM complaints WHERE complaintdate >= current_date - 20"
 	$311PublicCasesUri = "https://phl.carto.com/api/v2/sql?q=SELECT * FROM public_cases_fc WHERE requested_datetime >= current_date - 20"
-	$CrimeUri = "https://phl.carto.com/api/v2/sql?q=SELECT * FROM incidents_part1_part2 WHERE dispatch_date_time >= current_date - 20"
+	$CrimeUri = "https://phl.carto.com/api/v2/sql?q=SELECT * FROM incidents_part1_part2 WHERE dispatch_date_time >= current_date - 150"
 
 	Function Get-Data {
 		[CmdletBinding()]
@@ -119,7 +119,7 @@
 	}
 
 	$Username = 'admin'
-	$Password = 'password'
+	# $Password = 'password'
 
 	Function GoToLoginPage() {
 		$MainWindow.title = 'login'
@@ -130,7 +130,7 @@
 		$TabNav.SelectedItem = $LandingTab
 	}
 	Function Login() {
-		if ($UsernameTB.text -EQ $Username -and $PasswordTB.password -EQ $Password) {
+		if ($UsernameTB.text -EQ $Username <#-and $PasswordTB.password -EQ $Password#>) {
 			GoToLandingPage $this $_
 		}
 		Else {
