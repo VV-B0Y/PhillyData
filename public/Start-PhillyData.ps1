@@ -26,9 +26,12 @@
 		'last_name'
 		'first_name'
 		'title'
-		'annual_salary'
-		'ytd_overtime_gross'
-		'department'
+		'base_salary'
+		'overtime_gross_pay_qtd'
+		'base_gross_pay_qtd'
+		'longevity_gross_pay_qtd'
+		'miscellaneous_gross_pay_qtd'
+		'department_name'
 		'calendar_year'
 	)
 
@@ -78,8 +81,8 @@
 		"lat"
 		"lon"
 	)
-
-	$PPDSalUri = "https://phl.carto.com/api/v2/sql?q=SELECT * FROM employee_salaries WHERE department = 'POLICE DEPARTMENT' AND calendar_year = 2019"
+#https://phl.carto.com/api/v2/sql?q=SELECT * FROM employee_earnings WHERE department_name = 'SHF Sheriff'
+	$PPDSalUri = "https://phl.carto.com/api/v2/sql?q=SELECT * FROM employee_earnings WHERE department_name = 'PPD Police' AND calendar_year = '2024'"
 	$ViolationsURI = "https://phl.carto.com/api/v2/sql?q=SELECT * FROM violations WHERE casecreateddate >= current_date - 20 AND violationstatus = 'OPEN'"
 	$311ComplaintUri = "https://phl.carto.com/api/v2/sql?q=SELECT * FROM complaints WHERE complaintdate >= current_date - 20"
 	$311PublicCasesUri = "https://phl.carto.com/api/v2/sql?q=SELECT * FROM public_cases_fc WHERE requested_datetime >= current_date - 20"
