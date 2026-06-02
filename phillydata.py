@@ -4,8 +4,11 @@
 from __future__ import annotations
 
 import json
+import hmac
+import os
 import threading
 import tkinter as tk
+import webbrowser
 from dataclasses import dataclass
 from tkinter import messagebox, ttk
 from typing import Any
@@ -14,6 +17,8 @@ from urllib.parse import quote
 from urllib.request import urlopen
 
 BASE_URL = "https://phl.carto.com/api/v2/sql?q="
+DEFAULT_USERNAME = os.getenv("PHILLYDATA_USERNAME", "admin")
+DEFAULT_PASSWORD = os.getenv("PHILLYDATA_PASSWORD", "")
 
 
 @dataclass(frozen=True)
@@ -143,7 +148,7 @@ def _fetch_dataset_rows(dataset: Dataset) -> list[dict[str, Any]]:
 class PhillyDataApp:
     def __init__(self) -> None:
         self.root = tk.Tk()
-        self.root.title("PhillyData login")
+        self.root.title("PhillyData Login")
         self.root.geometry("1100x700")
 
         self.current_dataset: Dataset | None = None
@@ -216,12 +221,14 @@ class PhillyDataApp:
         self._show_dashboard()
 
     def _login(self) -> None:
-        if self.username_entry.get().strip() == "admin":
+        username = self.username_entry.get().strip()
+        password = self.password_entry.get()
+        if hmac.compare_digest(username, DEFAULT_USERNAME) and hmac.compare_digest(password, DEFAULT_PASSWORD):
             self.login_frame.destroy()
             self._build_main_view()
             self.root.title("City of Philadelphia Data")
         else:
-            self.login_error_var.set("login failed")
+            self.login_error_var.set("Login failed.")
 
     def _show_dashboard(self) -> None:
         self.current_dataset = None
@@ -271,7 +278,10 @@ class PhillyDataApp:
 
         self.status_var.set(f"Failed to load {dataset.title}")
         self.root.title(f"{dataset.title}: error")
-        messagebox.showerror("Dataset load failed", f"Could not load {dataset.title}.\n\n{exc}")
+        messagebox.showerror(
+            "Dataset load failed",
+            f"Could not load {dataset.title}.\n\nReason: {str(exc) or exc.__class__.__name__}",
+        )
 
     def _set_columns(self, columns: list[str]) -> None:
         self.tree["columns"] = columns
@@ -323,8 +333,6 @@ class PhillyDataApp:
         map_col = self.current_dataset.columns.index("open_map")
         url = values[map_col]
         if isinstance(url, str) and url.startswith("http"):
-            import webbrowser
-
             webbrowser.open_new_tab(url)
 
     @staticmethod
